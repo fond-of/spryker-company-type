@@ -37,6 +37,8 @@ class CompanyTypeWriter implements CompanyTypeWriterInterface
      */
     public function update(CompanyTypeTransfer $companyTypeTransfer): CompanyTypeTransfer
     {
+        $companyTypeTransfer->requireIdCompanyType();
+
         return $this->companyTypeEntityManager->persist($companyTypeTransfer);
     }
 

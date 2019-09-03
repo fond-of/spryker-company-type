@@ -48,7 +48,7 @@ class CompanyTypeFacade extends AbstractFacade implements CompanyTypeFacadeInter
      */
     public function createCompanyType(CompanyTypeTransfer $companyTypeTransfer): CompanyTypeTransfer
     {
-        // TODO: Implement createCompanyType() method.
+        return $this->getFactory()->createCompanyTypeWriter()->create($companyTypeTransfer);
     }
 
     /**
@@ -60,7 +60,7 @@ class CompanyTypeFacade extends AbstractFacade implements CompanyTypeFacadeInter
      */
     public function updateCompanyType(CompanyTypeTransfer $companyTypeTransfer): CompanyTypeTransfer
     {
-        // TODO: Implement updateCompanyType() method.
+        return $this->getFactory()->createCompanyTypeWriter()->update($companyTypeTransfer);
     }
 
     /**
@@ -74,6 +74,6 @@ class CompanyTypeFacade extends AbstractFacade implements CompanyTypeFacadeInter
      */
     public function deleteCompanyType(CompanyTypeTransfer $companyTypeTransfer): void
     {
-        // TODO: Implement deleteCompanyType() method.
+        $this->getFactory()->createCompanyTypeWriter()->deleteById($companyTypeTransfer);
     }
 }
