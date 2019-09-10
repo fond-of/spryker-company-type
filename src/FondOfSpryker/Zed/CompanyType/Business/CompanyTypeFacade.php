@@ -2,6 +2,7 @@
 
 namespace FondOfSpryker\Zed\CompanyType\Business;
 
+use Generated\Shared\Transfer\CompanyResponseTransfer;
 use Generated\Shared\Transfer\CompanyTypeCollectionTransfer;
 use Generated\Shared\Transfer\CompanyTypeTransfer;
 use Spryker\Zed\Kernel\Business\AbstractFacade;
@@ -75,5 +76,19 @@ class CompanyTypeFacade extends AbstractFacade implements CompanyTypeFacadeInter
     public function deleteCompanyType(CompanyTypeTransfer $companyTypeTransfer): void
     {
         $this->getFactory()->createCompanyTypeWriter()->deleteById($companyTypeTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CompanyResponseTransfer $companyResponseTransfer
+     *
+     * @return \Generated\Shared\Transfer\CompanyResponseTransfer
+     *
+     * @throws
+     */
+    public function assignDefaultCompanyTypeToNewCompany(CompanyResponseTransfer $companyResponseTransfer): CompanyResponseTransfer
+    {
+        return $this->getFactory()
+            ->createCompanyTypeAssigner()
+            ->assignDefaultCompanyTypeToNewCompany($companyResponseTransfer);
     }
 }

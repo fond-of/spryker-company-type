@@ -2,6 +2,7 @@
 
 namespace FondOfSpryker\Zed\CompanyType\Business;
 
+use Generated\Shared\Transfer\CompanyResponseTransfer;
 use Generated\Shared\Transfer\CompanyTypeCollectionTransfer;
 use Generated\Shared\Transfer\CompanyTypeTransfer;
 
@@ -62,4 +63,16 @@ interface CompanyTypeFacadeInterface
      * @return void
      */
     public function deleteCompanyType(CompanyTypeTransfer $companyTypeTransfer): void;
+
+    /**
+     * Specification:
+     * - Assigns default company type for a company after company create.
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\CompanyResponseTransfer $companyResponseTransfer
+     *
+     * @return \Generated\Shared\Transfer\CompanyResponseTransfer
+     */
+    public function assignDefaultCompanyTypeToNewCompany(CompanyResponseTransfer $companyResponseTransfer): CompanyResponseTransfer;
 }

@@ -22,6 +22,19 @@ interface CompanyTypeRepositoryInterface
 
     /**
      * Specification:
+     * - Returns a CompanyTypeTransfer by company type key.
+     * - Returns null in case a record is not found.
+     *
+     * @api
+     *
+     * @param string key
+     *
+     * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
+     */
+    public function getByKey(string $key): ?CompanyTypeTransfer;
+
+    /**
+     * Specification:
      * - Returns a CompanyTypeCollectionTransfer.
      *
      * @api
