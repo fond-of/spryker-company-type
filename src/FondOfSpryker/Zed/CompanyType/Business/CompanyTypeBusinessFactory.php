@@ -47,18 +47,7 @@ class CompanyTypeBusinessFactory extends AbstractBusinessFactory
     {
         return new CompanyTypeAssigner(
             $this->getConfig(),
-            $this->getRepository(),
-            $this->getCompanyFacade()
+            $this->getRepository()
         );
-    }
-
-    /**
-     * @return \FondOfSpryker\Zed\CompanyType\Dependency\Facade\CompanyTypeToCompanyFacadeInterface
-     *
-     * @throws
-     */
-    protected function getCompanyFacade(): CompanyTypeToCompanyFacadeInterface
-    {
-        return $this->getProvidedDependency(CompanyTypeDependencyProvider::FACADE_COMPANY);
     }
 }
