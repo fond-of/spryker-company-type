@@ -41,7 +41,7 @@ class CompanyTypeRepository extends AbstractRepository implements CompanyTypeRep
     /**
      * {@inheritdoc}
      *
-     * @param string $key
+     * @param string $name
      *
      * @api
      *
@@ -49,11 +49,11 @@ class CompanyTypeRepository extends AbstractRepository implements CompanyTypeRep
      *
      * @throws
      */
-    public function getByKey(string $key): ?CompanyTypeTransfer
+    public function getByName(string $name): ?CompanyTypeTransfer
     {
         $fosCompanyType = $this->getFactory()
             ->createCompanyTypeQuery()
-            ->filterByKey($key)
+            ->filterByName($name)
             ->findOne();
 
         if ($fosCompanyType === null) {
