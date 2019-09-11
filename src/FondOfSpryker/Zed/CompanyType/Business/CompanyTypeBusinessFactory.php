@@ -8,8 +8,6 @@ use FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeReader;
 use FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeReaderInterface;
 use FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeWriter;
 use FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeWriterInterface;
-use FondOfSpryker\Zed\CompanyType\CompanyTypeDependencyProvider;
-use FondOfSpryker\Zed\CompanyType\Dependency\Facade\CompanyTypeToCompanyFacadeInterface;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 
 /**
