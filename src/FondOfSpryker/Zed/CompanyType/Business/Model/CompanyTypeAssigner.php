@@ -3,7 +3,6 @@
 namespace FondOfSpryker\Zed\CompanyType\Business\Model;
 
 use FondOfSpryker\Zed\CompanyType\CompanyTypeConfig;
-use FondOfSpryker\Zed\CompanyType\Dependency\Facade\CompanyTypeToCompanyFacadeInterface;
 use FondOfSpryker\Zed\CompanyType\Persistence\CompanyTypeRepository;
 use Generated\Shared\Transfer\CompanyResponseTransfer;
 use Generated\Shared\Transfer\CompanyTypeTransfer;
@@ -30,14 +29,11 @@ class CompanyTypeAssigner implements CompanyTypeAssignerInterface
      *
      * @param \FondOfSpryker\Zed\CompanyType\CompanyTypeConfig $companyTypeConfig
      * @param \FondOfSpryker\Zed\CompanyType\Persistence\CompanyTypeRepository $companyTypeRepository
-     * @param \FondOfSpryker\Zed\CompanyType\Dependency\Facade\CompanyTypeToCompanyFacadeInterface $companyFacade
      */
     public function __construct(
         CompanyTypeConfig $companyTypeConfig,
-        CompanyTypeRepository $companyTypeRepository,
-        CompanyTypeToCompanyFacadeInterface $companyFacade
+        CompanyTypeRepository $companyTypeRepository
     ) {
-        $this->companyFacade = $companyFacade;
         $this->companyTypeConfig = $companyTypeConfig;
         $this->companyTypeRepository = $companyTypeRepository;
     }
@@ -57,6 +53,12 @@ class CompanyTypeAssigner implements CompanyTypeAssignerInterface
             return $companyResponseTransfer;
         }
 
+        $idCompanyType = $companyTransfer->getFkCompanyType();
+
+        if ($idCompanyType !== null) {
+            return $companyResponseTransfer;
+        }
+
         $companyTypeTransfer = $this->getDefaultCompanyType();
 
         if ($companyTypeTransfer === null || $companyTypeTransfer->getIdCompanyType() === null) {
@@ -65,16 +67,16 @@ class CompanyTypeAssigner implements CompanyTypeAssignerInterface
 
         $companyTransfer->setFkCompanyType($companyTypeTransfer->getIdCompanyType());
 
-        return $this->companyFacade->update($companyTransfer);
+        return $companyResponseTransfer;
     }
 
     /**
      * @return \Generated\Shared\Transfer\CompanyTypeTransfer
      */
-    private function getDefaultCompanyType(): CompanyTypeTransfer
+    private function getDefaultCompanyType(): ?CompanyTypeTransfer
     {
-        return $this->companyTypeRepository->getByKey(
-            $this->companyTypeConfig->getDefaultCompanyTypeKey()
+        return $this->companyTypeRepository->getByName(
+            $this->companyTypeConfig->getDefaultCompanyTypeName()
         );
     }
 
