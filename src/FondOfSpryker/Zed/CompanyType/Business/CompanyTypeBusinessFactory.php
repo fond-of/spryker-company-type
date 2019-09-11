@@ -2,6 +2,8 @@
 
 namespace FondOfSpryker\Zed\CompanyType\Business;
 
+use FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeAssigner;
+use FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeAssignerInterface;
 use FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeReader;
 use FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeReaderInterface;
 use FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeWriter;
@@ -31,6 +33,19 @@ class CompanyTypeBusinessFactory extends AbstractBusinessFactory
     {
         return new CompanyTypeWriter(
             $this->getEntityManager()
+        );
+    }
+
+    /**
+     * @return \FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeAssignerInterface
+     *
+     * @throws
+     */
+    public function createCompanyTypeAssigner(): CompanyTypeAssignerInterface
+    {
+        return new CompanyTypeAssigner(
+            $this->getConfig(),
+            $this->getRepository()
         );
     }
 }

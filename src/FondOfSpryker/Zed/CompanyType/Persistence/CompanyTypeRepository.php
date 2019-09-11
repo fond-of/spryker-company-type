@@ -41,6 +41,33 @@ class CompanyTypeRepository extends AbstractRepository implements CompanyTypeRep
     /**
      * {@inheritdoc}
      *
+     * @param string $name
+     *
+     * @api
+     *
+     * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
+     *
+     * @throws
+     */
+    public function getByName(string $name): ?CompanyTypeTransfer
+    {
+        $fosCompanyType = $this->getFactory()
+            ->createCompanyTypeQuery()
+            ->filterByName($name)
+            ->findOne();
+
+        if ($fosCompanyType === null) {
+            return null;
+        }
+
+        return $this->getFactory()
+            ->createCompanyTypeMapper()
+            ->mapEntityToTransfer($fosCompanyType, new CompanyTypeTransfer());
+    }
+
+    /**
+     * {@inheritdoc}
+     *
      * @api
      *
      * @return \Generated\Shared\Transfer\CompanyTypeCollectionTransfer

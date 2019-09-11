@@ -13,7 +13,7 @@ interface CompanyTypeReaderInterface
      * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
      */
     public function getById(CompanyTypeTransfer $companyTypeTransfer): ?CompanyTypeTransfer;
-
+    
     /**
      * @return \Generated\Shared\Transfer\CompanyTypeCollectionTransfer
      */
