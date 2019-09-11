@@ -20,11 +20,6 @@ class CompanyTypeAssigner implements CompanyTypeAssignerInterface
     protected $companyTypeRepository;
 
     /**
-     * @var \FondOfSpryker\Zed\CompanyType\Dependency\Facade\CompanyTypeToCompanyFacadeInterface
-     */
-    protected $companyFacade;
-
-    /**
      * CompanyTypeAssigner constructor.
      *
      * @param \FondOfSpryker\Zed\CompanyType\CompanyTypeConfig $companyTypeConfig
