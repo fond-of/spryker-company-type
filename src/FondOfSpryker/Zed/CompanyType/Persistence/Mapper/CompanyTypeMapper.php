@@ -3,6 +3,7 @@
 namespace FondOfSpryker\Zed\CompanyType\Persistence\Mapper;
 
 use Generated\Shared\Transfer\CompanyTypeTransfer;
+use Generated\Shared\Transfer\FosCompanyTypeEntityTransfer;
 use Orm\Zed\CompanyType\Persistence\FosCompanyType;
 
 class CompanyTypeMapper implements CompanyTypeMapperInterface
@@ -38,5 +39,38 @@ class CompanyTypeMapper implements CompanyTypeMapperInterface
         );
 
         return $fosCompanyType;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\FosCompanyTypeEntityTransfer $fosCompanyTypeEntityTransfer
+     * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
+     *
+     * @return \Generated\Shared\Transfer\CompanyTypeTransfer
+     */
+    public function mapEntityTransferToTransfer(
+        FosCompanyTypeEntityTransfer $fosCompanyTypeEntityTransfer,
+        CompanyTypeTransfer $companyTypeTransfer
+    ): CompanyTypeTransfer {
+        return $companyTypeTransfer->fromArray(
+            $fosCompanyTypeEntityTransfer->toArray(),
+            true
+        );
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
+     * @param \Generated\Shared\Transfer\FosCompanyTypeEntityTransfer $fosCompanyTypeEntityTransfer
+     *
+     * @return \Orm\Zed\CompanyType\Persistence\FosCompanyType
+     */
+    public function mapTransferToEntityTransfer(
+        CompanyTypeTransfer $companyTypeTransfer,
+        FosCompanyTypeEntityTransfer $fosCompanyTypeEntityTransfer
+    ): FosCompanyType {
+        $fosCompanyTypeEntityTransfer->fromArray(
+            $companyTypeTransfer->modifiedToArray(false)
+        );
+
+        return $fosCompanyTypeEntityTransfer;
     }
 }

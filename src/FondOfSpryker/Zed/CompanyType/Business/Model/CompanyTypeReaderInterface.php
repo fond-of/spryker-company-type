@@ -18,4 +18,11 @@ interface CompanyTypeReaderInterface
      * @return \Generated\Shared\Transfer\CompanyTypeCollectionTransfer
      */
     public function getAll(): CompanyTypeCollectionTransfer;
+
+    /**
+     * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
+     *
+     * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
+     */
+    public function getByName(CompanyTypeTransfer $companyTypeTransfer): ?CompanyTypeTransfer;
 }

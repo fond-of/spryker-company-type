@@ -34,6 +34,18 @@ class CompanyTypeReader implements CompanyTypeReaderInterface
     }
 
     /**
+     * @param string $name
+     *
+     * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
+     */
+    public function getByName(CompanyTypeTransfer $companyTypeTransfer): ?CompanyTypeTransfer
+    {
+        $companyTypeTransfer->requireName();
+
+        return $this->companyTypeRepository->getByName($companyTypeTransfer->getName());
+    }
+
+    /**
      * @return \Generated\Shared\Transfer\CompanyTypeCollectionTransfer
      */
     public function getAll(): CompanyTypeCollectionTransfer
