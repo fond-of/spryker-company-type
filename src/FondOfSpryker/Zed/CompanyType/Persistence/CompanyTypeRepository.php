@@ -122,36 +122,4 @@ class CompanyTypeRepository extends AbstractRepository implements CompanyTypeRep
 
         return $companyCollectionTransfer;
     }
-
-    /**
-     * Specification:
-     * - Returns a Companies by Company Type Names
-     *
-     * @api
-     *
-     * @param array $companyTypeIds
-     * @return \Generated\Shared\Transfer\CompanyCollectionTransfer
-     */
-    public function findCompaniesByCompanyTypeNames(array $companyTypeIds): CompanyCollectionTransfer
-    {
-        $companyCollection = $this->getFactory()
-            ->createCompanyQuery()
-            ->filterBy($companyTypeIds)
-            ->find();
-
-        if ($companyCollection === null) {
-            return null;
-        }
-
-        $companyMapper = $this->getFactory()->createCompanyMapper();
-        $companyCollectionTransfer = new CompanyCollectionTransfer();
-
-        foreach ($companyCollection as $companyEntity) {
-            $companyTransfer = $companyMapper->mapEntityToTransfer($companyEntity, new CompanyTransfer());
-            $companyCollectionTransfer->addCompany($companyTransfer);
-        }
-
-        return $companyCollectionTransfer;
-    }
-
 }
