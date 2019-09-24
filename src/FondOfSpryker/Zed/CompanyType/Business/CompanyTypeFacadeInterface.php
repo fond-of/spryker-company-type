@@ -85,11 +85,11 @@ interface CompanyTypeFacadeInterface
      *
      * @api
      *
-     * @param array $companyTypeIds
+     * @param \Generated\Shared\Transfer\CompanyTypeCollectionTransfer $companyTypeCollectionTransfer
      *
      * @return \Generated\Shared\Transfer\CompanyCollectionTransfer|null
      */
-    public function findCompaniesByCompanyTypeIds(array $companyTypeIds): ?CompanyCollectionTransfer;
+    public function findCompaniesByCompanyTypeIds(CompanyTypeCollectionTransfer $companyTypeCollectionTransfer): ?CompanyCollectionTransfer;
 
     /**
      * Specification:

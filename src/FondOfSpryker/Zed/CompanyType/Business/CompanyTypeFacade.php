@@ -96,13 +96,13 @@ class CompanyTypeFacade extends AbstractFacade implements CompanyTypeFacadeInter
     /**
      * {@inheritdoc}
      *
-     * @param array $companyTypeIds
+     * @param \Generated\Shared\Transfer\CompanyTypeCollectionTransfer $companyTypeCollectionTransfer
      *
      * @return \Generated\Shared\Transfer\CompanyCollectionTransfer|null
      */
-    public function findCompaniesByCompanyTypeIds(array $companyTypeIds): ?CompanyCollectionTransfer
+    public function findCompaniesByCompanyTypeIds(CompanyTypeCollectionTransfer $companyTypeCollectionTransfer): ?CompanyCollectionTransfer
     {
-        return $this->getRepository()->findCompaniesByCompanyTypeIds($companyTypeIds);
+        return $this->getFactory()->createCompanyTypeReader()->findCompaniesByCompanyTypeIds($companyTypeCollectionTransfer);
     }
 
     /**
