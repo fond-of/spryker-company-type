@@ -2,6 +2,7 @@
 
 namespace FondOfSpryker\Zed\CompanyType\Business;
 
+use Generated\Shared\Transfer\CompanyCollectionTransfer;
 use Generated\Shared\Transfer\CompanyResponseTransfer;
 use Generated\Shared\Transfer\CompanyTypeCollectionTransfer;
 use Generated\Shared\Transfer\CompanyTypeTransfer;
@@ -66,6 +67,45 @@ interface CompanyTypeFacadeInterface
 
     /**
      * Specification:
+     * - Finds a company type by id.
+     * - Returns null if company type does not exist.
+     *
+     * @api
+     *
+     * @param int $idCompanyType
+     *
+     * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
+     */
+    public function findCompanyTypeById(int $idCompanyType): ?CompanyTypeTransfer;
+
+    /**
+     * Specification:
+     * - Finds companies by company type ids
+     * - Returns null if there is no companies in the ids range
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\CompanyTypeCollectionTransfer $companyTypeCollectionTransfer
+     *
+     * @return \Generated\Shared\Transfer\CompanyCollectionTransfer|null
+     */
+    public function findCompaniesByCompanyTypeIds(CompanyTypeCollectionTransfer $companyTypeCollectionTransfer): ?CompanyCollectionTransfer;
+
+    /**
+     * Specification:
+     * - Finds a company type by CompanyTypeTransfer::name in the transfer
+     * - Returns null if there is no company type found
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
+     *
+     * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
+     */
+    public function getCompanyTypeByName(CompanyTypeTransfer $companyTypeTransfer): ?CompanyTypeTransfer;
+
+    /**
+     * Specification:
      * - Assigns default company type for a company after company create.
      *
      * @api
@@ -75,4 +115,10 @@ interface CompanyTypeFacadeInterface
      * @return \Generated\Shared\Transfer\CompanyResponseTransfer
      */
     public function assignDefaultCompanyTypeToNewCompany(CompanyResponseTransfer $companyResponseTransfer): CompanyResponseTransfer;
+
+    /**
+     * @return string|null
+     */
+    public function getCompanyTypeManufacturerName(): ?string;
+
 }

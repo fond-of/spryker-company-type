@@ -2,6 +2,7 @@
 
 namespace FondOfSpryker\Zed\CompanyType\Persistence;
 
+use Generated\Shared\Transfer\CompanyCollectionTransfer;
 use Generated\Shared\Transfer\CompanyTypeCollectionTransfer;
 use Generated\Shared\Transfer\CompanyTypeTransfer;
 
@@ -42,4 +43,15 @@ interface CompanyTypeRepositoryInterface
      * @return \Generated\Shared\Transfer\CompanyTypeCollectionTransfer
      */
     public function getAll(): CompanyTypeCollectionTransfer;
+
+    /**
+     * Specification:
+     * - Returns a Companies by Company Type Ids
+     *
+     * @api
+     *
+     * @param array $companyTypeIds
+     * @return \Generated\Shared\Transfer\CompanyCollectionTransfer
+     */
+    public function findCompaniesByCompanyTypeIds(array $companyTypeIds): CompanyCollectionTransfer;
 }

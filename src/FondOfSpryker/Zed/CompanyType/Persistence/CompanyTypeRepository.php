@@ -2,6 +2,8 @@
 
 namespace FondOfSpryker\Zed\CompanyType\Persistence;
 
+use Generated\Shared\Transfer\CompanyCollectionTransfer;
+use Generated\Shared\Transfer\CompanyTransfer;
 use Generated\Shared\Transfer\CompanyTypeCollectionTransfer;
 use Generated\Shared\Transfer\CompanyTypeTransfer;
 use Spryker\Zed\Kernel\Persistence\AbstractRepository;
@@ -83,10 +85,41 @@ class CompanyTypeRepository extends AbstractRepository implements CompanyTypeRep
         $companyTypeCollectionTransfer = new CompanyTypeCollectionTransfer();
 
         foreach ($fosCompanyTypes as $fosCompanyType) {
-            $companyTypeTransfer = $companyTypeMapper->mapEntityToTransfer($fosCompanyType, new CompanyTypeTransfer());
+            $companyTypeTransfer = $companyTypeMapper->mapEntityTransferToTransfer($fosCompanyType, new CompanyTypeTransfer());
             $companyTypeCollectionTransfer->addCompanyType($companyTypeTransfer);
         }
 
         return $companyTypeCollectionTransfer;
+    }
+
+    /**
+     * Specification:
+     * - Returns a Companies by Company Type Ids
+     *
+     * @api
+     *
+     * @param array $companyTypeIds
+     * @return \Generated\Shared\Transfer\CompanyCollectionTransfer
+     */
+    public function findCompaniesByCompanyTypeIds(array $companyTypeIds): CompanyCollectionTransfer
+    {
+        $companyCollection = $this->getFactory()
+            ->createCompanyQuery()
+            ->filterByFkCompanyType_In($companyTypeIds)
+            ->find();
+
+        if ($companyCollection === null) {
+            return null;
+        }
+
+        $companyMapper = $this->getFactory()->createCompanyMapper();
+        $companyCollectionTransfer = new CompanyCollectionTransfer();
+
+        foreach ($companyCollection as $companyEntity) {
+            $companyTransfer = $companyMapper->mapEntityToTransfer($companyEntity, new CompanyTransfer());
+            $companyCollectionTransfer->addCompany($companyTransfer);
+        }
+
+        return $companyCollectionTransfer;
     }
 }
