@@ -8,8 +8,9 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 
 /**
  * @method \FondOfSpryker\Zed\CompanyType\Business\CompanyTypeFacadeInterface getFacade()
+ * @method \FondOfSpryker\Zed\CompanyType\CompanyTypeConfig getConfig()
  */
-class CompanyTypePreSavePlugin extends AbstractPlugin implements CompanyPreSavePluginInterface
+class CompanyTypeCompanyPreSavePlugin extends AbstractPlugin implements CompanyPreSavePluginInterface
 {
     /**
      * {@inheritdoc}
