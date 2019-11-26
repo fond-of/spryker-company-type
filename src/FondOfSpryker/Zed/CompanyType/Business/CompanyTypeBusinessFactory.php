@@ -2,6 +2,8 @@
 
 namespace FondOfSpryker\Zed\CompanyType\Business;
 
+use FondOfSpryker\Zed\CompanyType\Business\CompanyTypeExportValidator\CompanyTypeExportValidator;
+use FondOfSpryker\Zed\CompanyType\Business\CompanyTypeExportValidator\CompanyTypeExportValidatorInterface;
 use FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeAssigner;
 use FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeAssignerInterface;
 use FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeReader;
@@ -46,6 +48,17 @@ class CompanyTypeBusinessFactory extends AbstractBusinessFactory
         return new CompanyTypeAssigner(
             $this->getConfig(),
             $this->getRepository()
+        );
+    }
+
+    /**
+     * @return \FondOfSpryker\Zed\CompanyType\Business\CompanyTypeExportValidator\CompanyTypeExportValidatorInterface
+     */
+    public function createCompanyTypeExportValidator(): CompanyTypeExportValidatorInterface
+    {
+        return new CompanyTypeExportValidator(
+            $this->createCompanyTypeReader(),
+            $this->getConfig()
         );
     }
 }

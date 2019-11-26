@@ -4,8 +4,10 @@ namespace FondOfSpryker\Zed\CompanyType\Business;
 
 use Generated\Shared\Transfer\CompanyCollectionTransfer;
 use Generated\Shared\Transfer\CompanyResponseTransfer;
+use Generated\Shared\Transfer\CompanyTransfer;
 use Generated\Shared\Transfer\CompanyTypeCollectionTransfer;
 use Generated\Shared\Transfer\CompanyTypeTransfer;
+use Generated\Shared\Transfer\EventEntityTransfer;
 use Spryker\Zed\Kernel\Business\AbstractFacade;
 
 /**
@@ -137,5 +139,17 @@ class CompanyTypeFacade extends AbstractFacade implements CompanyTypeFacadeInter
     public function getCompanyTypeManufacturerName(): ?string
     {
         return $this->getFactory()->getConfig()->getCompanyTypeManufacturer();
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\EventEntityTransfer $transfer
+     *
+     * @return bool
+     */
+    public function validateCompanyTypeForExport(EventEntityTransfer $transfer): bool
+    {
+        return $this->getFactory()
+            ->createCompanyTypeExportValidator()
+            ->validate($transfer);
     }
 }

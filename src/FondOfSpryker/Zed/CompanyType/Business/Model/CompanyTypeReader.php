@@ -4,6 +4,7 @@ namespace FondOfSpryker\Zed\CompanyType\Business\Model;
 
 use FondOfSpryker\Zed\CompanyType\Persistence\CompanyTypeRepositoryInterface;
 use Generated\Shared\Transfer\CompanyCollectionTransfer;
+use Generated\Shared\Transfer\CompanyTransfer;
 use Generated\Shared\Transfer\CompanyTypeCollectionTransfer;
 use Generated\Shared\Transfer\CompanyTypeTransfer;
 
@@ -60,6 +61,16 @@ class CompanyTypeReader implements CompanyTypeReaderInterface
         }
         
         return $this->companyTypeRepository->findCompaniesByCompanyTypeIds($companyTypeIds);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
+     *
+     * @return \Generated\Shared\Transfer\CompanyTypeTransfer
+     */
+    public function findCompanyTypeByIdCompany(CompanyTransfer $companyTransfer): ?CompanyTypeTransfer
+    {
+        return $this->companyTypeRepository->findCompanyTypeByIdCompany($companyTransfer);
     }
 
     /**
