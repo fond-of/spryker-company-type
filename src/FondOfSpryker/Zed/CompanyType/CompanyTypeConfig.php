@@ -27,7 +27,7 @@ class CompanyTypeConfig extends AbstractBundleConfig
     }
 
     /**
-     * @return array
+     * @return string[]
      */
     public function getValidCompanyTypesForExport(): array
     {
