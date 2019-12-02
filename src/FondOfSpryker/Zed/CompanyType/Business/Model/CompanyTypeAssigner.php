@@ -3,7 +3,7 @@
 namespace FondOfSpryker\Zed\CompanyType\Business\Model;
 
 use FondOfSpryker\Zed\CompanyType\CompanyTypeConfig;
-use FondOfSpryker\Zed\CompanyType\Persistence\CompanyTypeRepository;
+use FondOfSpryker\Zed\CompanyType\Persistence\CompanyTypeRepositoryInterface;
 use Generated\Shared\Transfer\CompanyResponseTransfer;
 use Generated\Shared\Transfer\CompanyTypeTransfer;
 
@@ -15,19 +15,17 @@ class CompanyTypeAssigner implements CompanyTypeAssignerInterface
     protected $companyTypeConfig;
 
     /**
-     * @var \FondOfSpryker\Zed\CompanyType\Persistence\CompanyTypeRepository
+     * @var \FondOfSpryker\Zed\CompanyType\Persistence\CompanyTypeRepositoryInterface
      */
     protected $companyTypeRepository;
 
     /**
-     * CompanyTypeAssigner constructor.
-     *
      * @param \FondOfSpryker\Zed\CompanyType\CompanyTypeConfig $companyTypeConfig
-     * @param \FondOfSpryker\Zed\CompanyType\Persistence\CompanyTypeRepository $companyTypeRepository
+     * @param \FondOfSpryker\Zed\CompanyType\Persistence\CompanyTypeRepositoryInterface $companyTypeRepository
      */
     public function __construct(
         CompanyTypeConfig $companyTypeConfig,
-        CompanyTypeRepository $companyTypeRepository
+        CompanyTypeRepositoryInterface $companyTypeRepository
     ) {
         $this->companyTypeConfig = $companyTypeConfig;
         $this->companyTypeRepository = $companyTypeRepository;
@@ -66,7 +64,7 @@ class CompanyTypeAssigner implements CompanyTypeAssignerInterface
     }
 
     /**
-     * @return \Generated\Shared\Transfer\CompanyTypeTransfer
+     * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
      */
     private function getDefaultCompanyType(): ?CompanyTypeTransfer
     {
@@ -74,5 +72,4 @@ class CompanyTypeAssigner implements CompanyTypeAssignerInterface
             $this->companyTypeConfig->getDefaultCompanyTypeName()
         );
     }
-
 }

@@ -12,6 +12,8 @@ use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
 
 /**
  * @method \FondOfSpryker\Zed\CompanyType\Persistence\CompanyTypeRepositoryInterface getRepository()
+ * @method \FondOfSpryker\Zed\CompanyType\Persistence\CompanyTypeEntityManagerInterface getEntityManager()
+ * @method \FondOfSpryker\Zed\CompanyType\CompanyTypeConfig getConfig()
  */
 class CompanyTypePersistenceFactory extends AbstractPersistenceFactory
 {
@@ -27,7 +29,7 @@ class CompanyTypePersistenceFactory extends AbstractPersistenceFactory
      * @return \Orm\Zed\Company\Persistence\SpyCompanyQuery
      */
     public function createCompanyQuery(): SpyCompanyQuery
-        {
+    {
             return SpyCompanyQuery::create();
     }
 

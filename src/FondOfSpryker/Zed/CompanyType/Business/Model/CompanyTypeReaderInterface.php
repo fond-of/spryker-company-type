@@ -15,7 +15,7 @@ interface CompanyTypeReaderInterface
      * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
      */
     public function getById(CompanyTypeTransfer $companyTypeTransfer): ?CompanyTypeTransfer;
-    
+
     /**
      * @return \Generated\Shared\Transfer\CompanyTypeCollectionTransfer
      */
@@ -36,7 +36,7 @@ interface CompanyTypeReaderInterface
     public function findCompaniesByCompanyTypeIds(CompanyTypeCollectionTransfer $companyTypeCollectionTransfer): ?CompanyCollectionTransfer;
 
     /**
-     * @param \FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTransfer $companyTransfer
+     * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
      *
      * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
      */

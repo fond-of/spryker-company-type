@@ -13,6 +13,7 @@ use FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeWriterInterface;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 
 /**
+ * @method \FondOfSpryker\Zed\CompanyType\CompanyTypeConfig getConfig()
  * @method \FondOfSpryker\Zed\CompanyType\Persistence\CompanyTypeEntityManagerInterface getEntityManager()
  * @method \FondOfSpryker\Zed\CompanyType\Persistence\CompanyTypeRepositoryInterface getRepository()
  */
@@ -39,9 +40,9 @@ class CompanyTypeBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeAssignerInterface
-     *
      * @throws
+     *
+     * @return \FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeAssignerInterface
      */
     public function createCompanyTypeAssigner(): CompanyTypeAssignerInterface
     {

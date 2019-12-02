@@ -2,10 +2,9 @@
 
 namespace FondOfSpryker\Zed\CompanyType\Business\CompanyTypeExportValidator;
 
-use FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeReader;
+use FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeReaderInterface;
 use FondOfSpryker\Zed\CompanyType\CompanyTypeConfig;
 use Generated\Shared\Transfer\CompanyTransfer;
-use Generated\Shared\Transfer\CompanyTypeTransfer;
 use Generated\Shared\Transfer\EventEntityTransfer;
 
 class CompanyTypeExportValidator implements CompanyTypeExportValidatorInterface
@@ -16,18 +15,16 @@ class CompanyTypeExportValidator implements CompanyTypeExportValidatorInterface
     protected $companyTypeConfig;
 
     /**
-     * @var \FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeReader
+     * @var \FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeReaderInterface
      */
     protected $companyTypeReader;
 
     /**
-     * CompanyTypeExportValidator constructor.
-     *
-     * @param \FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeReader $companyTypeReader
+     * @param \FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeReaderInterface $companyTypeReader
      * @param \FondOfSpryker\Zed\CompanyType\CompanyTypeConfig $companyTypeConfig
      */
     public function __construct(
-        CompanyTypeReader $companyTypeReader,
+        CompanyTypeReaderInterface $companyTypeReader,
         CompanyTypeConfig $companyTypeConfig
     ) {
         $this->companyTypeConfig = $companyTypeConfig;
@@ -42,14 +39,16 @@ class CompanyTypeExportValidator implements CompanyTypeExportValidatorInterface
     public function validate(EventEntityTransfer $eventEntityTransfer): bool
     {
         $idCompany = null;
+
         if ($eventEntityTransfer->getName() === 'spy_company') {
             $idCompany = $eventEntityTransfer->getId();
-        }else {
-            $foreignKey = $eventEntityTransfer->getName().'.fk_company';
-            if (array_key_exists($foreignKey, $eventEntityTransfer->getForeignKeys())) {
-                $idCompany =  $eventEntityTransfer->getForeignKeys()[$foreignKey];
-            }
+        }
 
+        $foreignKey = sprintf('%s.fk_company', $eventEntityTransfer->getName());
+        $foreignKeys = $eventEntityTransfer->getForeignKeys();
+
+        if ($idCompany === null && array_key_exists($foreignKey, $foreignKeys)) {
+            $idCompany = $foreignKeys[$foreignKey];
         }
 
         if ($idCompany === null) {
@@ -57,13 +56,17 @@ class CompanyTypeExportValidator implements CompanyTypeExportValidatorInterface
         }
 
         $companyTransfer = (new CompanyTransfer())->setIdCompany($idCompany);
+
         $companyTypeTransfer = $this->companyTypeReader->findCompanyTypeByIdCompany($companyTransfer);
 
         if ($companyTypeTransfer === null) {
             return false;
         }
 
-        return in_array($companyTypeTransfer->getName(),
-            $this->companyTypeConfig->getValidCompanyTypesForExport());
+        return in_array(
+            $companyTypeTransfer->getName(),
+            $this->companyTypeConfig->getValidCompanyTypesForExport(),
+            true
+        );
     }
 }

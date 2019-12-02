@@ -61,12 +61,12 @@ class CompanyTypeMapper implements CompanyTypeMapperInterface
      * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
      * @param \Generated\Shared\Transfer\FosCompanyTypeEntityTransfer $fosCompanyTypeEntityTransfer
      *
-     * @return \Orm\Zed\CompanyType\Persistence\FosCompanyType
+     * @return \Generated\Shared\Transfer\FosCompanyTypeEntityTransfer
      */
     public function mapTransferToEntityTransfer(
         CompanyTypeTransfer $companyTypeTransfer,
         FosCompanyTypeEntityTransfer $fosCompanyTypeEntityTransfer
-    ): FosCompanyType {
+    ): FosCompanyTypeEntityTransfer {
         $fosCompanyTypeEntityTransfer->fromArray(
             $companyTypeTransfer->modifiedToArray(false)
         );

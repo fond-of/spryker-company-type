@@ -90,7 +90,9 @@ interface CompanyTypeFacadeInterface
      *
      * @return \Generated\Shared\Transfer\CompanyCollectionTransfer|null
      */
-    public function findCompaniesByCompanyTypeIds(CompanyTypeCollectionTransfer $companyTypeCollectionTransfer): ?CompanyCollectionTransfer;
+    public function findCompaniesByCompanyTypeIds(
+        CompanyTypeCollectionTransfer $companyTypeCollectionTransfer
+    ): ?CompanyCollectionTransfer;
 
     /**
      * Specification:
@@ -115,7 +117,9 @@ interface CompanyTypeFacadeInterface
      *
      * @return \Generated\Shared\Transfer\CompanyResponseTransfer
      */
-    public function assignDefaultCompanyTypeToNewCompany(CompanyResponseTransfer $companyResponseTransfer): CompanyResponseTransfer;
+    public function assignDefaultCompanyTypeToNewCompany(
+        CompanyResponseTransfer $companyResponseTransfer
+    ): CompanyResponseTransfer;
 
     /**
      * @return string|null
@@ -128,5 +132,4 @@ interface CompanyTypeFacadeInterface
      * @return bool
      */
     public function validateCompanyTypeForExport(EventEntityTransfer $transfer): bool;
-
 }

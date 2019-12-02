@@ -4,7 +4,6 @@ namespace FondOfSpryker\Zed\CompanyType\Business;
 
 use Generated\Shared\Transfer\CompanyCollectionTransfer;
 use Generated\Shared\Transfer\CompanyResponseTransfer;
-use Generated\Shared\Transfer\CompanyTransfer;
 use Generated\Shared\Transfer\CompanyTypeCollectionTransfer;
 use Generated\Shared\Transfer\CompanyTypeTransfer;
 use Generated\Shared\Transfer\EventEntityTransfer;
@@ -122,18 +121,23 @@ class CompanyTypeFacade extends AbstractFacade implements CompanyTypeFacadeInter
     /**
      * @param \Generated\Shared\Transfer\CompanyResponseTransfer $companyResponseTransfer
      *
-     * @return \Generated\Shared\Transfer\CompanyResponseTransfer
-     *
      * @throws
+     *
+     * @return \Generated\Shared\Transfer\CompanyResponseTransfer
      */
     public function assignDefaultCompanyTypeToNewCompany(CompanyResponseTransfer $companyResponseTransfer
-    ): CompanyResponseTransfer {
+    ): CompanyResponseTransfer
+    {
         return $this->getFactory()
             ->createCompanyTypeAssigner()
             ->assignDefaultCompanyTypeToNewCompany($companyResponseTransfer);
     }
 
     /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
      * @return string|null
      */
     public function getCompanyTypeManufacturerName(): ?string

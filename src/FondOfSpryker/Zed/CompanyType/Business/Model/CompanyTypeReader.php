@@ -36,7 +36,7 @@ class CompanyTypeReader implements CompanyTypeReaderInterface
     }
 
     /**
-     * @param string $name
+     * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
      *
      * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
      */
@@ -57,16 +57,16 @@ class CompanyTypeReader implements CompanyTypeReaderInterface
         $companyTypeIds = [];
 
         foreach ($companyTypeCollectionTransfer->getCompanyTypes() as $companyTypeTransfer) {
-            array_push($companyTypeIds, $companyTypeTransfer->getIdCompanyType());
+            $companyTypeIds[] = $companyTypeTransfer->getIdCompanyType();
         }
-        
+
         return $this->companyTypeRepository->findCompaniesByCompanyTypeIds($companyTypeIds);
     }
 
     /**
      * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
      *
-     * @return \Generated\Shared\Transfer\CompanyTypeTransfer
+     * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
      */
     public function findCompanyTypeByIdCompany(CompanyTransfer $companyTransfer): ?CompanyTypeTransfer
     {
