@@ -3,6 +3,7 @@
 namespace FondOfSpryker\Zed\CompanyType\Business\Model;
 
 use Generated\Shared\Transfer\CompanyCollectionTransfer;
+use Generated\Shared\Transfer\CompanyTransfer;
 use Generated\Shared\Transfer\CompanyTypeCollectionTransfer;
 use Generated\Shared\Transfer\CompanyTypeTransfer;
 
@@ -33,4 +34,11 @@ interface CompanyTypeReaderInterface
      * @return \Generated\Shared\Transfer\CompanyTypeCollectionTransfer|null
      */
     public function findCompaniesByCompanyTypeIds(CompanyTypeCollectionTransfer $companyTypeCollectionTransfer): ?CompanyCollectionTransfer;
+
+    /**
+     * @param \FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTransfer $companyTransfer
+     *
+     * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
+     */
+    public function findCompanyTypeByIdCompany(CompanyTransfer $companyTransfer): ?CompanyTypeTransfer;
 }

@@ -6,6 +6,7 @@ use Generated\Shared\Transfer\CompanyCollectionTransfer;
 use Generated\Shared\Transfer\CompanyResponseTransfer;
 use Generated\Shared\Transfer\CompanyTypeCollectionTransfer;
 use Generated\Shared\Transfer\CompanyTypeTransfer;
+use Generated\Shared\Transfer\EventEntityTransfer;
 
 interface CompanyTypeFacadeInterface
 {
@@ -120,5 +121,12 @@ interface CompanyTypeFacadeInterface
      * @return string|null
      */
     public function getCompanyTypeManufacturerName(): ?string;
+
+    /**
+     * @param \Generated\Shared\Transfer\EventEntityTransfer $transfer
+     *
+     * @return bool
+     */
+    public function validateCompanyTypeForExport(EventEntityTransfer $transfer): bool;
 
 }

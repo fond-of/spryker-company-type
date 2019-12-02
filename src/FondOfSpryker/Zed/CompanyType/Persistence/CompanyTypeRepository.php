@@ -122,4 +122,24 @@ class CompanyTypeRepository extends AbstractRepository implements CompanyTypeRep
 
         return $companyCollectionTransfer;
     }
+
+    /**
+     * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
+     * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
+     *
+     * @throws \Spryker\Zed\Propel\Business\Exception\AmbiguousComparisonException
+     */
+    public function findCompanyTypeByIdCompany(CompanyTransfer $companyTransfer): ?CompanyTypeTransfer
+    {
+        $companyEntity = $this->getFactory()
+            ->createCompanyQuery()
+            ->filterByIdCompany($companyTransfer->getIdCompany())
+            ->findOne();
+
+        if ($companyEntity === null) {
+            return null;
+        }
+
+        return $this->getById($companyEntity->getFkCompanyType());
+    }
 }

@@ -25,4 +25,12 @@ class CompanyTypeConfig extends AbstractBundleConfig
     {
         return $this->get(CompanyTypeConstants::MANUFACTURER_COMPANY_TYPE_NAME, static::MANUFACTURER_COMPANY_TYPE_NAME);
     }
+
+    /**
+     * @return string[]
+     */
+    public function getValidCompanyTypesForExport(): array
+    {
+        return $this->get(CompanyTypeConstants::VALID_COMPANY_TYPES_FOR_EXPORT, []);
+    }
 }
