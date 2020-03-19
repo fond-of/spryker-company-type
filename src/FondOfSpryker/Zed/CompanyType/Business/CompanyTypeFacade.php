@@ -4,6 +4,7 @@ namespace FondOfSpryker\Zed\CompanyType\Business;
 
 use Generated\Shared\Transfer\CompanyCollectionTransfer;
 use Generated\Shared\Transfer\CompanyResponseTransfer;
+use Generated\Shared\Transfer\CompanyTransfer;
 use Generated\Shared\Transfer\CompanyTypeCollectionTransfer;
 use Generated\Shared\Transfer\CompanyTypeTransfer;
 use Generated\Shared\Transfer\EventEntityTransfer;
@@ -92,6 +93,20 @@ class CompanyTypeFacade extends AbstractFacade implements CompanyTypeFacadeInter
     public function findCompanyTypeById(int $idCompanyType): ?CompanyTypeTransfer
     {
         return $this->getRepository()->getById($idCompanyType);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
+     *
+     * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
+     */
+    public function findCompanyTypeByIdCompany(CompanyTransfer $companyTransfer): ?CompanyTypeTransfer
+    {
+        return $this->getFactory()->createCompanyTypeReader()->findCompanyTypeByIdCompany($companyTransfer);
     }
 
     /**
