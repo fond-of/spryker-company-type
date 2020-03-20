@@ -4,6 +4,7 @@ namespace FondOfSpryker\Zed\CompanyType\Business;
 
 use Generated\Shared\Transfer\CompanyCollectionTransfer;
 use Generated\Shared\Transfer\CompanyResponseTransfer;
+use Generated\Shared\Transfer\CompanyTransfer;
 use Generated\Shared\Transfer\CompanyTypeCollectionTransfer;
 use Generated\Shared\Transfer\CompanyTypeTransfer;
 use Generated\Shared\Transfer\EventEntityTransfer;
@@ -78,6 +79,19 @@ interface CompanyTypeFacadeInterface
      * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
      */
     public function findCompanyTypeById(int $idCompanyType): ?CompanyTypeTransfer;
+
+    /**
+     * Specification:
+     * - Finds a company type by Id Company.
+     * - Returns null if company type does not exist.
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
+     *
+     * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
+     */
+    public function findCompanyTypeByIdCompany(CompanyTransfer $companyTransfer): ?CompanyTypeTransfer;
 
     /**
      * Specification:
