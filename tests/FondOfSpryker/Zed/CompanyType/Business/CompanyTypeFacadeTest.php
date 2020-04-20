@@ -159,8 +159,7 @@ class CompanyTypeFacadeTest extends Unit
             ->willReturn($this->companyTypeWriterMock);
 
         $this->companyTypeWriterMock->expects($this->atLeastOnce())
-            ->method('deleteById')
-            ->willReturn($this->companyTypeTransferMock);
+            ->method('deleteById');
 
         $this->companyTypeFacade->deleteCompanyType($this->companyTypeTransferMock);
     }

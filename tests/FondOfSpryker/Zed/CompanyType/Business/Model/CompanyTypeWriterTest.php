@@ -94,8 +94,7 @@ class CompanyTypeWriterTest extends Unit
 
         $this->companyTypeEntityManagerMock->expects($this->atLeastOnce())
             ->method('deleteById')
-            ->with($idCompanyType)
-            ->willReturn($idCompanyType);
+            ->with($idCompanyType);
 
         $this->companyTypeWriter->deleteById($this->companyTypeTransferMock);
     }
