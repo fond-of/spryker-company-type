@@ -14,15 +14,13 @@ use Spryker\Zed\Kernel\Persistence\AbstractRepository;
 class CompanyTypeRepository extends AbstractRepository implements CompanyTypeRepositoryInterface
 {
     /**
-     * {@inheritdoc}
-     *
-     * @param int $idCompanyType
+     * {@inheritDoc}
      *
      * @api
      *
-     * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
+     * @param int $idCompanyType
      *
-     * @throws
+     * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
      */
     public function getById(int $idCompanyType): ?CompanyTypeTransfer
     {
@@ -41,15 +39,13 @@ class CompanyTypeRepository extends AbstractRepository implements CompanyTypeRep
     }
 
     /**
-     * {@inheritdoc}
-     *
-     * @param string $name
+     * {@inheritDoc}
      *
      * @api
      *
-     * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
+     * @param string $name
      *
-     * @throws
+     * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
      */
     public function getByName(string $name): ?CompanyTypeTransfer
     {
@@ -68,7 +64,7 @@ class CompanyTypeRepository extends AbstractRepository implements CompanyTypeRep
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -99,16 +95,17 @@ class CompanyTypeRepository extends AbstractRepository implements CompanyTypeRep
      * @api
      *
      * @param array $companyTypeIds
-     * @return \Generated\Shared\Transfer\CompanyCollectionTransfer
+     *
+     * @return \Generated\Shared\Transfer\CompanyCollectionTransfer|null
      */
-    public function findCompaniesByCompanyTypeIds(array $companyTypeIds): CompanyCollectionTransfer
+    public function findCompaniesByCompanyTypeIds(array $companyTypeIds): ?CompanyCollectionTransfer
     {
         $companyCollection = $this->getFactory()
             ->createCompanyQuery()
             ->filterByFkCompanyType_In($companyTypeIds)
             ->find();
 
-        if ($companyCollection === null) {
+        if ($companyCollection->count() === 0) {
             return null;
         }
 
@@ -125,9 +122,8 @@ class CompanyTypeRepository extends AbstractRepository implements CompanyTypeRep
 
     /**
      * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
-     * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
      *
-     * @throws \Spryker\Zed\Propel\Business\Exception\AmbiguousComparisonException
+     * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
      */
     public function findCompanyTypeByIdCompany(CompanyTransfer $companyTransfer): ?CompanyTypeTransfer
     {

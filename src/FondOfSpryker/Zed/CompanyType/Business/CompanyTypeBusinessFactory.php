@@ -40,8 +40,6 @@ class CompanyTypeBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @throws
-     *
      * @return \FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeAssignerInterface
      */
     public function createCompanyTypeAssigner(): CompanyTypeAssignerInterface

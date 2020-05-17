@@ -16,8 +16,6 @@ class CompanyTypeEntityManager extends AbstractEntityManager implements CompanyT
      * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
      *
      * @return \Generated\Shared\Transfer\CompanyTypeTransfer
-     *
-     * @throws
      */
     public function persist(CompanyTypeTransfer $companyTypeTransfer): CompanyTypeTransfer
     {
@@ -43,8 +41,6 @@ class CompanyTypeEntityManager extends AbstractEntityManager implements CompanyT
      * @param int $idCompanyType
      *
      * @return void
-     *
-     * @throws
      */
     public function deleteById(int $idCompanyType): void
     {

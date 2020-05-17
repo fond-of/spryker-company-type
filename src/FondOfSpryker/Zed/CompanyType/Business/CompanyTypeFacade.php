@@ -136,8 +136,6 @@ class CompanyTypeFacade extends AbstractFacade implements CompanyTypeFacadeInter
     /**
      * @param \Generated\Shared\Transfer\CompanyResponseTransfer $companyResponseTransfer
      *
-     * @throws
-     *
      * @return \Generated\Shared\Transfer\CompanyResponseTransfer
      */
     public function assignDefaultCompanyTypeToNewCompany(CompanyResponseTransfer $companyResponseTransfer

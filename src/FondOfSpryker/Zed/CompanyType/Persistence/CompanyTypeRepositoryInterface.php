@@ -29,7 +29,7 @@ interface CompanyTypeRepositoryInterface
      *
      * @api
      *
-     * @param string name
+     * @param string $name
      *
      * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
      */
@@ -52,9 +52,10 @@ interface CompanyTypeRepositoryInterface
      * @api
      *
      * @param array $companyTypeIds
-     * @return \Generated\Shared\Transfer\CompanyCollectionTransfer
+     *
+     * @return \Generated\Shared\Transfer\CompanyCollectionTransfer|null
      */
-    public function findCompaniesByCompanyTypeIds(array $companyTypeIds): CompanyCollectionTransfer;
+    public function findCompaniesByCompanyTypeIds(array $companyTypeIds): ?CompanyCollectionTransfer;
 
     /**
      * Specification:
@@ -63,6 +64,7 @@ interface CompanyTypeRepositoryInterface
      * @api
      *
      * @param \Generated\Shared\Transfer\CompanyTransfer $companyTransfer
+     *
      * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
      */
     public function findCompanyTypeByIdCompany(CompanyTransfer $companyTransfer): ?CompanyTypeTransfer;

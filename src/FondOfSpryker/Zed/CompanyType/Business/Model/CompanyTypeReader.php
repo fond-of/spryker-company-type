@@ -50,7 +50,7 @@ class CompanyTypeReader implements CompanyTypeReaderInterface
     /**
      * @param \Generated\Shared\Transfer\CompanyTypeCollectionTransfer $companyTypeCollectionTransfer
      *
-     * @return \Generated\Shared\Transfer\CompanyTypeCollectionTransfer|null
+     * @return \Generated\Shared\Transfer\CompanyCollectionTransfer|null
      */
     public function findCompaniesByCompanyTypeIds(CompanyTypeCollectionTransfer $companyTypeCollectionTransfer): ?CompanyCollectionTransfer
     {
