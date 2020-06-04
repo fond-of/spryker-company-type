@@ -18,13 +18,13 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
 class CompanyTypeFacade extends AbstractFacade implements CompanyTypeFacadeInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
+     *
+     * @api
      *
      * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
      *
      * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
-     * @api
-     *
      */
     public function getCompanyTypeById(CompanyTypeTransfer $companyTypeTransfer): ?CompanyTypeTransfer
     {
@@ -32,11 +32,11 @@ class CompanyTypeFacade extends AbstractFacade implements CompanyTypeFacadeInter
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
-     * @return \Generated\Shared\Transfer\CompanyTypeCollectionTransfer
      * @api
      *
+     * @return \Generated\Shared\Transfer\CompanyTypeCollectionTransfer
      */
     public function getCompanyTypes(): CompanyTypeCollectionTransfer
     {
@@ -44,7 +44,7 @@ class CompanyTypeFacade extends AbstractFacade implements CompanyTypeFacadeInter
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
      *
@@ -56,7 +56,7 @@ class CompanyTypeFacade extends AbstractFacade implements CompanyTypeFacadeInter
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
      *
@@ -68,13 +68,13 @@ class CompanyTypeFacade extends AbstractFacade implements CompanyTypeFacadeInter
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
+     *
+     * @api
      *
      * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
      *
      * @return void
-     * @api
-     *
      */
     public function deleteCompanyType(CompanyTypeTransfer $companyTypeTransfer): void
     {
@@ -82,13 +82,13 @@ class CompanyTypeFacade extends AbstractFacade implements CompanyTypeFacadeInter
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
+     *
+     * @api
      *
      * @param int $idCompanyType
      *
      * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
-     * @api
-     *
      */
     public function findCompanyTypeById(int $idCompanyType): ?CompanyTypeTransfer
     {
@@ -96,7 +96,7 @@ class CompanyTypeFacade extends AbstractFacade implements CompanyTypeFacadeInter
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -110,7 +110,7 @@ class CompanyTypeFacade extends AbstractFacade implements CompanyTypeFacadeInter
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @param \Generated\Shared\Transfer\CompanyTypeCollectionTransfer $companyTypeCollectionTransfer
      *
@@ -122,7 +122,7 @@ class CompanyTypeFacade extends AbstractFacade implements CompanyTypeFacadeInter
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
      *
@@ -138,8 +138,7 @@ class CompanyTypeFacade extends AbstractFacade implements CompanyTypeFacadeInter
      *
      * @return \Generated\Shared\Transfer\CompanyResponseTransfer
      */
-    public function assignDefaultCompanyTypeToNewCompany(CompanyResponseTransfer $companyResponseTransfer
-    ): CompanyResponseTransfer
+    public function assignDefaultCompanyTypeToNewCompany(CompanyResponseTransfer $companyResponseTransfer): CompanyResponseTransfer
     {
         return $this->getFactory()
             ->createCompanyTypeAssigner()
@@ -147,7 +146,7 @@ class CompanyTypeFacade extends AbstractFacade implements CompanyTypeFacadeInter
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *

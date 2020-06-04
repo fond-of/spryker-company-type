@@ -39,7 +39,6 @@ class CompanyTypeAssigner implements CompanyTypeAssignerInterface
     public function assignDefaultCompanyTypeToNewCompany(
         CompanyResponseTransfer $companyResponseTransfer
     ): CompanyResponseTransfer {
-
         $companyTransfer = $companyResponseTransfer->getCompanyTransfer();
 
         if ($companyTransfer === null) {
