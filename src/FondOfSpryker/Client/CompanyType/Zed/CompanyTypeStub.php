@@ -21,6 +21,8 @@ class CompanyTypeStub implements CompanyTypeStubInterface
     }
 
     /**
+     * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
+     *
      * @return \Generated\Shared\Transfer\CompanyTypeTransfer
      */
     public function getCompanyTypeById(CompanyTypeTransfer $companyTypeTransfer): CompanyTypeTransfer
