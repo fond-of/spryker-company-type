@@ -3,6 +3,7 @@
 namespace FondOfSpryker\Client\CompanyType\Zed;
 
 use FondOfSpryker\Client\CompanyType\Dependency\Client\CompanyTypeToZedRequestClientInterface;
+use Generated\Shared\Transfer\CompanyTypeResponseTransfer;
 use Generated\Shared\Transfer\CompanyTypeTransfer;
 
 class CompanyTypeStub implements CompanyTypeStubInterface
@@ -21,6 +22,7 @@ class CompanyTypeStub implements CompanyTypeStubInterface
     }
 
     /**
+     *
      * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
      *
      * @return \Generated\Shared\Transfer\CompanyTypeTransfer
@@ -34,5 +36,21 @@ class CompanyTypeStub implements CompanyTypeStubInterface
         );
 
         return $companyTypeTransfer;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
+     *
+     * @return \Generated\Shared\Transfer\CompanyTypeResponseTransfer
+     */
+    public function findCompanyTypeById(CompanyTypeTransfer $companyTypeTransfer): CompanyTypeResponseTransfer
+    {
+        /** @var \Generated\Shared\Transfer\CompanyTypeResponseTransfer $companyTypeResponseTransfer */
+        $companyTypeResponseTransfer = $this->zedRequestClient->call(
+            '/company-type/gateway/find-company-type-by-id',
+            $companyTypeTransfer
+        );
+
+        return $companyTypeResponseTransfer;
     }
 }

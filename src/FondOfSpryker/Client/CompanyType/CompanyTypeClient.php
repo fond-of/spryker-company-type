@@ -2,6 +2,7 @@
 
 namespace FondOfSpryker\Client\CompanyType;
 
+use Generated\Shared\Transfer\CompanyTypeResponseTransfer;
 use Generated\Shared\Transfer\CompanyTypeTransfer;
 use Spryker\Client\Kernel\AbstractClient;
 
@@ -18,5 +19,15 @@ class CompanyTypeClient extends AbstractClient implements CompanyTypeClientInter
     public function getCompanyTypeById(CompanyTypeTransfer $companyTypeTransfer): CompanyTypeTransfer
     {
         return $this->getFactory()->createZedCompanyTypeStub()->getCompanyTypeById($companyTypeTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
+     *
+     * @return \Generated\Shared\Transfer\CompanyTypeResponseTransfer
+     */
+    public function findCompanyTypeById(CompanyTypeTransfer $companyTypeTransfer): CompanyTypeResponseTransfer
+    {
+        return $this->getFactory()->createZedCompanyTypeStub()->findCompanyTypeById($companyTypeTransfer);
     }
 }
