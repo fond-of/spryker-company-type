@@ -4,6 +4,7 @@ namespace FondOfSpryker\Client\CompanyType\Zed;
 
 use Codeception\Test\Unit;
 use FondOfSpryker\Client\CompanyType\Dependency\Client\CompanyTypeToZedRequestClientInterface;
+use Generated\Shared\Transfer\CompanyTypeResponseTransfer;
 use Generated\Shared\Transfer\CompanyTypeTransfer;
 
 class CompanyTypeStubTest extends Unit
@@ -24,6 +25,11 @@ class CompanyTypeStubTest extends Unit
     protected $companyTypeTransferMock;
 
     /**
+     * @var \PHPUnit\Framework\MockObject\MockObject|\Generated\Shared\Transfer\CompanyTypeResponseTransfer
+     */
+    protected $companyTypeResponseTransferMock;
+
+    /**
      * @var string
      */
     protected $url;
@@ -41,7 +47,11 @@ class CompanyTypeStubTest extends Unit
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->url = '/company-type/gateway/get-company-type-by-id';
+        $this->companyTypeResponseTransferMock = $this->getMockBuilder(CompanyTypeResponseTransfer::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $this->url = '/company-type/gateway/find-company-type-by-id';
 
         $this->companyTypeStub = new CompanyTypeStub(
             $this->companyTypeToZedRequestClientInterfaceMock
@@ -51,18 +61,18 @@ class CompanyTypeStubTest extends Unit
     /**
      * @return void
      */
-    public function testGetCompanyTypeById(): void
+    public function testFindCompanyTypeById(): void
     {
         $this->companyTypeToZedRequestClientInterfaceMock->expects($this->atLeastOnce())
             ->method('call')
             ->with(
                 $this->url,
                 $this->companyTypeTransferMock
-            )->willReturn($this->companyTypeTransferMock);
+            )->willReturn($this->companyTypeResponseTransferMock);
 
         $this->assertInstanceOf(
-            CompanyTypeTransfer::class,
-            $this->companyTypeStub->getCompanyTypeById(
+            CompanyTypeResponseTransfer::class,
+            $this->companyTypeStub->findCompanyTypeById(
                 $this->companyTypeTransferMock
             )
         );
