@@ -11,7 +11,6 @@ use Generated\Shared\Transfer\CompanyTypeTransfer;
 interface CompanyTypeReaderInterface
 {
     /**
-     *
      * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
      *
      * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
