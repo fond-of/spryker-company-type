@@ -22,23 +22,6 @@ class CompanyTypeStub implements CompanyTypeStubInterface
     }
 
     /**
-     *
-     * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyTypeTransfer
-     */
-    public function getCompanyTypeById(CompanyTypeTransfer $companyTypeTransfer): CompanyTypeTransfer
-    {
-        /** @var \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer */
-        $companyTypeTransfer = $this->zedRequestClient->call(
-            '/company-type/gateway/get-company-type-by-id',
-            $companyTypeTransfer
-        );
-
-        return $companyTypeTransfer;
-    }
-
-    /**
      * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
      *
      * @return \Generated\Shared\Transfer\CompanyTypeResponseTransfer
