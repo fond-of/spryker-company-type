@@ -12,18 +12,6 @@ use Spryker\Zed\Kernel\Communication\Controller\AbstractGatewayController;
 class GatewayController extends AbstractGatewayController
 {
     /**
-     * @deprecated use instead findCompanyTypeByIdAction
-     *
-     * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyTypeResponseTransfer
-     */
-    public function getCompanyTypeByIdAction(CompanyTypeTransfer $companyTypeTransfer): CompanyTypeResponseTransfer
-    {
-        return $this->getFacade()->findCompanyTypeById($companyTypeTransfer);
-    }
-
-    /**
      *
      * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
      *
