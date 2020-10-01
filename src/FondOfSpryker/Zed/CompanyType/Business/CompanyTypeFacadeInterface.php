@@ -6,6 +6,7 @@ use Generated\Shared\Transfer\CompanyCollectionTransfer;
 use Generated\Shared\Transfer\CompanyResponseTransfer;
 use Generated\Shared\Transfer\CompanyTransfer;
 use Generated\Shared\Transfer\CompanyTypeCollectionTransfer;
+use Generated\Shared\Transfer\CompanyTypeResponseTransfer;
 use Generated\Shared\Transfer\CompanyTypeTransfer;
 use Generated\Shared\Transfer\EventEntityTransfer;
 
@@ -70,15 +71,14 @@ interface CompanyTypeFacadeInterface
     /**
      * Specification:
      * - Finds a company type by id.
-     * - Returns null if company type does not exist.
+     * - Requires idCompanyType field to be set in CompanyRoleTransfer taken as parameter.
      *
      * @api
      *
-     * @param int $idCompanyType
-     *
-     * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
+     * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
+     * @return \Generated\Shared\Transfer\CompanyTypeResponseTransfer
      */
-    public function findCompanyTypeById(int $idCompanyType): ?CompanyTypeTransfer;
+    public function findCompanyTypeById(CompanyTypeTransfer $companyTypeTransfer): CompanyTypeResponseTransfer;
 
     /**
      * Specification:

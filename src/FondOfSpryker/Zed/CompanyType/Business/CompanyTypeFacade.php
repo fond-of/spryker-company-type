@@ -6,6 +6,7 @@ use Generated\Shared\Transfer\CompanyCollectionTransfer;
 use Generated\Shared\Transfer\CompanyResponseTransfer;
 use Generated\Shared\Transfer\CompanyTransfer;
 use Generated\Shared\Transfer\CompanyTypeCollectionTransfer;
+use Generated\Shared\Transfer\CompanyTypeResponseTransfer;
 use Generated\Shared\Transfer\CompanyTypeTransfer;
 use Generated\Shared\Transfer\EventEntityTransfer;
 use Spryker\Zed\Kernel\Business\AbstractFacade;
@@ -86,13 +87,13 @@ class CompanyTypeFacade extends AbstractFacade implements CompanyTypeFacadeInter
      *
      * @api
      *
-     * @param int $idCompanyType
+     * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
      *
-     * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
+     * @return \Generated\Shared\Transfer\CompanyTypeResponseTransfer
      */
-    public function findCompanyTypeById(int $idCompanyType): ?CompanyTypeTransfer
+    public function findCompanyTypeById(CompanyTypeTransfer $companyTypeTransfer): CompanyTypeResponseTransfer
     {
-        return $this->getRepository()->getById($idCompanyType);
+        return $this->getFactory()->createCompanyTypeReader()->findCompanyTypeById($companyTypeTransfer);
     }
 
     /**

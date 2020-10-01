@@ -16,4 +16,9 @@
         <property name="fkCompanyType" type="int"/>
         <property name="companyType" type="CompanyType"/>
     </transfer>
+
+    <transfer name="CompanyTypeResponse">
+        <property name="companyTypeTransfer" type="CompanyType"/>
+        <property name="isSuccessful" type="bool"/>
+    </transfer>
 </transfers>

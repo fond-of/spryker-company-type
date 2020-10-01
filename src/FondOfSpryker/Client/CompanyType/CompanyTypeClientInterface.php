@@ -2,6 +2,7 @@
 
 namespace FondOfSpryker\Client\CompanyType;
 
+use Generated\Shared\Transfer\CompanyTypeResponseTransfer;
 use Generated\Shared\Transfer\CompanyTypeTransfer;
 
 interface CompanyTypeClientInterface
@@ -9,7 +10,7 @@ interface CompanyTypeClientInterface
     /**
      * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
      *
-     * @return \Generated\Shared\Transfer\CompanyTypeTransfer
+     * @return \Generated\Shared\Transfer\CompanyTypeResponseTransfer
      */
-    public function getCompanyTypeById(CompanyTypeTransfer $companyTypeTransfer): CompanyTypeTransfer;
+    public function findCompanyTypeById(CompanyTypeTransfer $companyTypeTransfer): CompanyTypeResponseTransfer;
 }

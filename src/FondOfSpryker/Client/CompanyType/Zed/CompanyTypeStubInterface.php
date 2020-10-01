@@ -2,6 +2,7 @@
 
 namespace FondOfSpryker\Client\CompanyType\Zed;
 
+use Generated\Shared\Transfer\CompanyTypeResponseTransfer;
 use Generated\Shared\Transfer\CompanyTypeTransfer;
 
 interface CompanyTypeStubInterface
@@ -9,9 +10,9 @@ interface CompanyTypeStubInterface
     /**
      * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
      *
-     * @return \Generated\Shared\Transfer\CompanyTypeTransfer
+     * @return \Generated\Shared\Transfer\CompanyTypeResponseTransfer
      */
-    public function getCompanyTypeById(
+    public function findCompanyTypeById(
         CompanyTypeTransfer $companyTypeTransfer
-    ): CompanyTypeTransfer;
+    ): CompanyTypeResponseTransfer;
 }
