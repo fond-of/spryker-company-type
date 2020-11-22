@@ -14,16 +14,6 @@ class CompanyTypeClient extends AbstractClient implements CompanyTypeClientInter
     /**
      * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
      *
-     * @return \Generated\Shared\Transfer\CompanyTypeTransfer
-     */
-    public function getCompanyTypeById(CompanyTypeTransfer $companyTypeTransfer): CompanyTypeTransfer
-    {
-        return $this->getFactory()->createZedCompanyTypeStub()->getCompanyTypeById($companyTypeTransfer);
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
-     *
      * @return \Generated\Shared\Transfer\CompanyTypeResponseTransfer
      */
     public function findCompanyTypeById(CompanyTypeTransfer $companyTypeTransfer): CompanyTypeResponseTransfer
