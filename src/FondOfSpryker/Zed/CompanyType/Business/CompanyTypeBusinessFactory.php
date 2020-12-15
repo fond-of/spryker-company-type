@@ -10,6 +10,8 @@ use FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeReader;
 use FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeReaderInterface;
 use FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeWriter;
 use FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeWriterInterface;
+use FondOfSpryker\Zed\CompanyType\CompanyTypeDependencyProvider;
+use FondOfSpryker\Zed\CompanyType\Dependency\Facade\CompanyTypeToCompanyBusinessUnitFacadeInterface;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 
 /**
@@ -57,7 +59,16 @@ class CompanyTypeBusinessFactory extends AbstractBusinessFactory
     {
         return new CompanyTypeExportValidator(
             $this->createCompanyTypeReader(),
+            $this->getCompanyBusinessUnitFacade(),
             $this->getConfig()
         );
+    }
+
+    /**
+     * @return \FondOfSpryker\Zed\CompanyType\Dependency\Facade\CompanyTypeToCompanyBusinessUnitFacadeInterface
+     */
+    public function getCompanyBusinessUnitFacade(): CompanyTypeToCompanyBusinessUnitFacadeInterface
+    {
+        return $this->getProvidedDependency(CompanyTypeDependencyProvider::FACADE_COMPANY_BUSINESS_UNIT);
     }
 }

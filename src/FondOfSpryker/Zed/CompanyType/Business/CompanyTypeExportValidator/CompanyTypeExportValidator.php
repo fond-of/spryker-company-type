@@ -4,11 +4,26 @@ namespace FondOfSpryker\Zed\CompanyType\Business\CompanyTypeExportValidator;
 
 use FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeReaderInterface;
 use FondOfSpryker\Zed\CompanyType\CompanyTypeConfig;
+use FondOfSpryker\Zed\CompanyType\Dependency\Facade\CompanyTypeToCompanyBusinessUnitFacadeInterface;
+use Generated\Shared\Transfer\CompanyBusinessUnitTransfer;
 use Generated\Shared\Transfer\CompanyTransfer;
 use Generated\Shared\Transfer\EventEntityTransfer;
 
+/**
+ * Class CompanyTypeExportValidator
+ *
+ * @package FondOfSpryker\Zed\CompanyType\Business\CompanyTypeExportValidator
+ */
 class CompanyTypeExportValidator implements CompanyTypeExportValidatorInterface
 {
+    protected const  EVENT_ENTITY_TYPE_COMPANY_BUSINESS_UNIT = 'spy_company_business_unit';
+    protected const  EVENT_ENTITY_TYPE_COMPANY = 'spy_company';
+
+    /**
+     * @var \FondOfSpryker\Zed\CompanyType\Dependency\Facade\CompanyTypeToCompanyBusinessUnitFacadeInterface
+     */
+    protected $companyBusinessUnitFacade;
+
     /**
      * @var \FondOfSpryker\Zed\CompanyType\CompanyTypeConfig
      */
@@ -21,12 +36,15 @@ class CompanyTypeExportValidator implements CompanyTypeExportValidatorInterface
 
     /**
      * @param \FondOfSpryker\Zed\CompanyType\Business\Model\CompanyTypeReaderInterface $companyTypeReader
+     * @param \FondOfSpryker\Zed\CompanyType\Dependency\Facade\CompanyTypeToCompanyBusinessUnitFacadeInterface $companyBusinessUnitFacade
      * @param \FondOfSpryker\Zed\CompanyType\CompanyTypeConfig $companyTypeConfig
      */
     public function __construct(
         CompanyTypeReaderInterface $companyTypeReader,
+        CompanyTypeToCompanyBusinessUnitFacadeInterface $companyBusinessUnitFacade,
         CompanyTypeConfig $companyTypeConfig
     ) {
+        $this->companyBusinessUnitFacade = $companyBusinessUnitFacade;
         $this->companyTypeConfig = $companyTypeConfig;
         $this->companyTypeReader = $companyTypeReader;
     }
@@ -38,17 +56,10 @@ class CompanyTypeExportValidator implements CompanyTypeExportValidatorInterface
      */
     public function validate(EventEntityTransfer $eventEntityTransfer): bool
     {
-        $idCompany = null;
+        $idCompany = $this->getCompanyIdByForeignKey($eventEntityTransfer);
 
-        if ($eventEntityTransfer->getName() === 'spy_company') {
-            $idCompany = $eventEntityTransfer->getId();
-        }
-
-        $foreignKey = sprintf('%s.fk_company', $eventEntityTransfer->getName());
-        $foreignKeys = $eventEntityTransfer->getForeignKeys();
-
-        if ($idCompany === null && array_key_exists($foreignKey, $foreignKeys)) {
-            $idCompany = $foreignKeys[$foreignKey];
+        if ($idCompany === null) {
+            $idCompany = $this->getCompanyIdByEventEntityType($eventEntityTransfer);
         }
 
         if ($idCompany === null) {
@@ -56,7 +67,6 @@ class CompanyTypeExportValidator implements CompanyTypeExportValidatorInterface
         }
 
         $companyTransfer = (new CompanyTransfer())->setIdCompany($idCompany);
-
         $companyTypeTransfer = $this->companyTypeReader->findCompanyTypeByIdCompany($companyTransfer);
 
         if ($companyTypeTransfer === null) {
@@ -68,5 +78,59 @@ class CompanyTypeExportValidator implements CompanyTypeExportValidatorInterface
             $this->companyTypeConfig->getValidCompanyTypesForExport(),
             true
         );
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\EventEntityTransfer $eventEntityTransfer
+     *
+     * @return int|null
+     */
+    protected function getCompanyIdByForeignKey(EventEntityTransfer $eventEntityTransfer): ?int
+    {
+        $foreignKey = sprintf('%s.fk_company', $eventEntityTransfer->getName());
+        $foreignKeys = $eventEntityTransfer->getForeignKeys();
+
+        if (array_key_exists($foreignKey, $foreignKeys) === false) {
+            return null;
+        }
+
+        return $foreignKeys[$foreignKey];
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\EventEntityTransfer $eventEntityTransfer
+     *
+     * @return int|null
+     */
+    protected function getCompanyIdByEventEntityType(EventEntityTransfer $eventEntityTransfer): ?int
+    {
+        if ($eventEntityTransfer->getName() === self::EVENT_ENTITY_TYPE_COMPANY) {
+            return $eventEntityTransfer->getId();
+        }
+
+        if ($eventEntityTransfer->getName() === self::EVENT_ENTITY_TYPE_COMPANY_BUSINESS_UNIT) {
+            return $this->getCompanyIdByCompanyBusinessUnitId($eventEntityTransfer);
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\EventEntityTransfer $eventEntityTransfer
+     *
+     * @return int|null
+     */
+    protected function getCompanyIdByCompanyBusinessUnitId(EventEntityTransfer $eventEntityTransfer): ?int
+    {
+        $companyBusinessUnitTransfer = (new CompanyBusinessUnitTransfer())
+            ->setIdCompanyBusinessUnit($eventEntityTransfer->getId());
+        $companyBusinessUnitTransfer = $this->companyBusinessUnitFacade
+            ->getCompanyBusinessUnitById($companyBusinessUnitTransfer);
+
+        if ($companyBusinessUnitTransfer === null) {
+            return null;
+        }
+
+        return $companyBusinessUnitTransfer->getFkCompany();
     }
 }
