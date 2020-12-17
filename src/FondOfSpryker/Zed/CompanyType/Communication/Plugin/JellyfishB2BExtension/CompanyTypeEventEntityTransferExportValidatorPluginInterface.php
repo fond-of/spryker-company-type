@@ -7,6 +7,7 @@ use Generated\Shared\Transfer\EventEntityTransfer;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 
 /**
+ *
  * @method \FondOfSpryker\Zed\CompanyType\Business\CompanyTypeFacadeInterface getFacade()
  * @method \FondOfSpryker\Zed\CompanyType\CompanyTypeConfig getConfig()
  */
