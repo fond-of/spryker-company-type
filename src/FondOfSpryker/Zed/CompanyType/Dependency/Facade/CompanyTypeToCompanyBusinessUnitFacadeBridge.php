@@ -20,6 +20,11 @@ class CompanyTypeToCompanyBusinessUnitFacadeBridge implements CompanyTypeToCompa
         $this->companyBusinessUnitFacade = $companyBusinessUnitFacade;
     }
 
+    /**
+     * @param \Generated\Shared\Transfer\CompanyBusinessUnitTransfer $companyBusinessUnitTransfer
+     * 
+     * @return \Generated\Shared\Transfer\CompanyBusinessUnitTransfer
+     */
     public function getCompanyBusinessUnitById(
         CompanyBusinessUnitTransfer $companyBusinessUnitTransfer
     ): CompanyBusinessUnitTransfer {
