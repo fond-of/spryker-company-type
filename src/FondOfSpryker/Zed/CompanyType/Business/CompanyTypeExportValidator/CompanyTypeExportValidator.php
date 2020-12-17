@@ -127,10 +127,6 @@ class CompanyTypeExportValidator implements CompanyTypeExportValidatorInterface
         $companyBusinessUnitTransfer = $this->companyBusinessUnitFacade
             ->getCompanyBusinessUnitById($companyBusinessUnitTransfer);
 
-        if ($companyBusinessUnitTransfer === null) {
-            return null;
-        }
-
         return $companyBusinessUnitTransfer->getFkCompany();
     }
 }
