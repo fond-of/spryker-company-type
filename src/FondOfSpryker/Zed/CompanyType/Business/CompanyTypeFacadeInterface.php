@@ -76,6 +76,7 @@ interface CompanyTypeFacadeInterface
      * @api
      *
      * @param \Generated\Shared\Transfer\CompanyTypeTransfer $companyTypeTransfer
+     *
      * @return \Generated\Shared\Transfer\CompanyTypeResponseTransfer
      */
     public function findCompanyTypeById(CompanyTypeTransfer $companyTypeTransfer): CompanyTypeResponseTransfer;

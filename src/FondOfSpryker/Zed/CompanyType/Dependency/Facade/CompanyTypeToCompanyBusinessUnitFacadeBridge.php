@@ -22,7 +22,7 @@ class CompanyTypeToCompanyBusinessUnitFacadeBridge implements CompanyTypeToCompa
 
     /**
      * @param \Generated\Shared\Transfer\CompanyBusinessUnitTransfer $companyBusinessUnitTransfer
-     * 
+     *
      * @return \Generated\Shared\Transfer\CompanyBusinessUnitTransfer
      */
     public function getCompanyBusinessUnitById(
