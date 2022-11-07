@@ -7,7 +7,14 @@ use Spryker\Zed\Kernel\AbstractBundleConfig;
 
 class CompanyTypeConfig extends AbstractBundleConfig
 {
+    /**
+     * @var string
+     */
     protected const DEFAULT_COMPANY_TYPE_NAME = 'default';
+
+    /**
+     * @var string
+     */
     protected const MANUFACTURER_COMPANY_TYPE_NAME = 'manufacturer';
 
     /**
@@ -27,7 +34,7 @@ class CompanyTypeConfig extends AbstractBundleConfig
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getValidCompanyTypesForExport(): array
     {

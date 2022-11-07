@@ -88,7 +88,7 @@ class CompanyTypeFacadeTest extends Unit
 
         $this->assertEquals(
             $this->companyTypeTransferMock,
-            $this->companyTypeFacade->getCompanyTypeById($this->companyTypeTransferMock)
+            $this->companyTypeFacade->getCompanyTypeById($this->companyTypeTransferMock),
         );
     }
 
@@ -107,7 +107,7 @@ class CompanyTypeFacadeTest extends Unit
 
         $this->assertEquals(
             $this->companyTypeCollectionTransferMock,
-            $this->companyTypeFacade->getCompanyTypes()
+            $this->companyTypeFacade->getCompanyTypes(),
         );
     }
 
@@ -126,7 +126,7 @@ class CompanyTypeFacadeTest extends Unit
 
         $this->assertEquals(
             $this->companyTypeTransferMock,
-            $this->companyTypeFacade->createCompanyType($this->companyTypeTransferMock)
+            $this->companyTypeFacade->createCompanyType($this->companyTypeTransferMock),
         );
     }
 
@@ -145,7 +145,7 @@ class CompanyTypeFacadeTest extends Unit
 
         $this->assertEquals(
             $this->companyTypeTransferMock,
-            $this->companyTypeFacade->updateCompanyType($this->companyTypeTransferMock)
+            $this->companyTypeFacade->updateCompanyType($this->companyTypeTransferMock),
         );
     }
 

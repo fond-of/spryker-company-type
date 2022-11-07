@@ -8,6 +8,9 @@ use Spryker\Zed\Kernel\Container;
 
 class CompanyTypeDependencyProvider extends AbstractBundleDependencyProvider
 {
+    /**
+     * @var string
+     */
     public const FACADE_COMPANY_BUSINESS_UNIT = 'FACADE_COMPANY_BUSINESS_UNIT';
 
     /**
@@ -33,7 +36,7 @@ class CompanyTypeDependencyProvider extends AbstractBundleDependencyProvider
     {
         $container[static::FACADE_COMPANY_BUSINESS_UNIT] = function (Container $container) {
             return new CompanyTypeToCompanyBusinessUnitFacadeBridge(
-                $container->getLocator()->companyBusinessUnit()->facade()
+                $container->getLocator()->companyBusinessUnit()->facade(),
             );
         };
 

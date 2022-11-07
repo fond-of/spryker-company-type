@@ -29,7 +29,6 @@ class CompanyTypeReaderTest extends Unit
      */
     protected $companyTypeReader;
 
-
     /**
      * @return void
      */
@@ -74,7 +73,7 @@ class CompanyTypeReaderTest extends Unit
 
         $this->assertEquals(
             $this->companyTypeTransferMock,
-            $this->companyTypeReader->getById($this->companyTypeTransferMock)
+            $this->companyTypeReader->getById($this->companyTypeTransferMock),
         );
     }
 
@@ -89,7 +88,7 @@ class CompanyTypeReaderTest extends Unit
 
         $this->assertEquals(
             $this->companyTypeCollectionTransferMock,
-            $this->companyTypeReader->getAll()
+            $this->companyTypeReader->getAll(),
         );
     }
 }

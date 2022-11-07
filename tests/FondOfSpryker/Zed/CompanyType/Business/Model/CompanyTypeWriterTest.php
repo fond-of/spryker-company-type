@@ -53,7 +53,7 @@ class CompanyTypeWriterTest extends Unit
 
         $this->assertEquals(
             $this->companyTypeTransferMock,
-            $this->companyTypeWriter->create($this->companyTypeTransferMock)
+            $this->companyTypeWriter->create($this->companyTypeTransferMock),
         );
     }
 
@@ -73,7 +73,7 @@ class CompanyTypeWriterTest extends Unit
 
         $this->assertEquals(
             $this->companyTypeTransferMock,
-            $this->companyTypeWriter->update($this->companyTypeTransferMock)
+            $this->companyTypeWriter->update($this->companyTypeTransferMock),
         );
     }
 

@@ -44,7 +44,7 @@ class CompanyTypeToZedRequestClientBridgeTest extends Unit
             ->getMock();
 
         $this->companyTypeToZedRequestClientBridge = new CompanyTypeToZedRequestClientBridge(
-            $this->zedRequestClientInterfaceMock
+            $this->zedRequestClientInterfaceMock,
         );
     }
 
@@ -57,15 +57,15 @@ class CompanyTypeToZedRequestClientBridgeTest extends Unit
             ->method('call')
             ->with(
                 $this->url,
-                $this->transferInterfaceMock
+                $this->transferInterfaceMock,
             )->willReturn($this->transferInterfaceMock);
 
         $this->assertInstanceOf(
             TransferInterface::class,
             $this->companyTypeToZedRequestClientBridge->call(
                 $this->url,
-                $this->transferInterfaceMock
-            )
+                $this->transferInterfaceMock,
+            ),
         );
     }
 }

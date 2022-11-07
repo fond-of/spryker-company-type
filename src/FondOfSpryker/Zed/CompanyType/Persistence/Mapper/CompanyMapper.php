@@ -19,7 +19,7 @@ class CompanyMapper implements CompanyMapperInterface
     ): CompanyTransfer {
         return $companyTransfer->fromArray(
             $spyCompany->toArray(),
-            true
+            true,
         );
     }
 }

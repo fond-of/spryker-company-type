@@ -39,7 +39,7 @@ class CompanyTypeToCompanyBusinessUnitFacadeBridgeTest extends Unit
             ->getMock();
 
         $this->companyTypeToCompanyBusinessUnitFacadeBridge = new CompanyTypeToCompanyBusinessUnitFacadeBridge(
-            $this->companyBusinessUnitFacadeMock
+            $this->companyBusinessUnitFacadeMock,
         );
     }
 
@@ -59,7 +59,7 @@ class CompanyTypeToCompanyBusinessUnitFacadeBridgeTest extends Unit
         $this->assertEquals($this->companyBusinessUnitTransferMock, $companyBusinesssUnitTransfer);
         $this->assertInstanceOf(
             CompanyBusinessUnitTransfer::class,
-            $companyBusinesssUnitTransfer
+            $companyBusinesssUnitTransfer,
         );
     }
 }

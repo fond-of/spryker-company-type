@@ -68,7 +68,7 @@ class CompanyTypeAssigner implements CompanyTypeAssignerInterface
     private function getDefaultCompanyType(): ?CompanyTypeTransfer
     {
         return $this->companyTypeRepository->getByName(
-            $this->companyTypeConfig->getDefaultCompanyTypeName()
+            $this->companyTypeConfig->getDefaultCompanyTypeName(),
         );
     }
 }
