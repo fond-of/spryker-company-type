@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          name="zed" xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd"
+          name="zed" xsi:noNamespaceSchemaLocation="https://static.spryker.com/schema-01.xsd"
           namespace="Orm\Zed\CompanyType\Persistence"
           package="src.Orm.Zed.CompanyType.Persistence">
 
