@@ -54,7 +54,7 @@ class CompanyTypeStubTest extends Unit
         $this->url = '/company-type/gateway/find-company-type-by-id';
 
         $this->companyTypeStub = new CompanyTypeStub(
-            $this->companyTypeToZedRequestClientInterfaceMock
+            $this->companyTypeToZedRequestClientInterfaceMock,
         );
     }
 
@@ -67,14 +67,14 @@ class CompanyTypeStubTest extends Unit
             ->method('call')
             ->with(
                 $this->url,
-                $this->companyTypeTransferMock
+                $this->companyTypeTransferMock,
             )->willReturn($this->companyTypeResponseTransferMock);
 
         $this->assertInstanceOf(
             CompanyTypeResponseTransfer::class,
             $this->companyTypeStub->findCompanyTypeById(
-                $this->companyTypeTransferMock
-            )
+                $this->companyTypeTransferMock,
+            ),
         );
     }
 }

@@ -76,8 +76,8 @@ class CompanyTypeClientTest extends Unit
         $this->assertInstanceOf(
             CompanyTypeResponseTransfer::class,
             $this->companyTypeClient->findCompanyTypeById(
-                $this->companyTypeTransferMock
-            )
+                $this->companyTypeTransferMock,
+            ),
         );
     }
 }

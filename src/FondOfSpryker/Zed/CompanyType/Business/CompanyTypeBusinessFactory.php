@@ -27,7 +27,7 @@ class CompanyTypeBusinessFactory extends AbstractBusinessFactory
     public function createCompanyTypeReader(): CompanyTypeReaderInterface
     {
         return new CompanyTypeReader(
-            $this->getRepository()
+            $this->getRepository(),
         );
     }
 
@@ -37,7 +37,7 @@ class CompanyTypeBusinessFactory extends AbstractBusinessFactory
     public function createCompanyTypeWriter(): CompanyTypeWriterInterface
     {
         return new CompanyTypeWriter(
-            $this->getEntityManager()
+            $this->getEntityManager(),
         );
     }
 
@@ -48,7 +48,7 @@ class CompanyTypeBusinessFactory extends AbstractBusinessFactory
     {
         return new CompanyTypeAssigner(
             $this->getConfig(),
-            $this->getRepository()
+            $this->getRepository(),
         );
     }
 
@@ -60,7 +60,7 @@ class CompanyTypeBusinessFactory extends AbstractBusinessFactory
         return new CompanyTypeExportValidator(
             $this->createCompanyTypeReader(),
             $this->getCompanyBusinessUnitFacade(),
-            $this->getConfig()
+            $this->getConfig(),
         );
     }
 

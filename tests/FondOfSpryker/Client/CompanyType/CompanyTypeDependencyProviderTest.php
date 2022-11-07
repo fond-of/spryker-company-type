@@ -82,13 +82,13 @@ class CompanyTypeDependencyProviderTest extends Unit
             ->willReturn($this->zedRequestClientMock);
 
         $container = $this->companyTypeDependencyProvider->provideServiceLayerDependencies(
-            $this->containerMock
+            $this->containerMock,
         );
 
         $this->assertEquals($this->containerMock, $container);
         $this->assertInstanceOf(
             CompanyTypeToZedRequestClientBridge::class,
-            $container[CompanyTypeDependencyProvider::CLIENT_ZED_REQUEST]
+            $container[CompanyTypeDependencyProvider::CLIENT_ZED_REQUEST],
         );
     }
 }

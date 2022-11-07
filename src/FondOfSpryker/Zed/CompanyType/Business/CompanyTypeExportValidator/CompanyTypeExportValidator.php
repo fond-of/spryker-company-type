@@ -16,8 +16,15 @@ use Generated\Shared\Transfer\EventEntityTransfer;
  */
 class CompanyTypeExportValidator implements CompanyTypeExportValidatorInterface
 {
-    protected const  EVENT_ENTITY_TYPE_COMPANY_BUSINESS_UNIT = 'spy_company_business_unit';
-    protected const  EVENT_ENTITY_TYPE_COMPANY = 'spy_company';
+    /**
+     * @var string
+     */
+    protected const EVENT_ENTITY_TYPE_COMPANY_BUSINESS_UNIT = 'spy_company_business_unit';
+
+    /**
+     * @var string
+     */
+    protected const EVENT_ENTITY_TYPE_COMPANY = 'spy_company';
 
     /**
      * @var \FondOfSpryker\Zed\CompanyType\Dependency\Facade\CompanyTypeToCompanyBusinessUnitFacadeInterface
@@ -76,7 +83,7 @@ class CompanyTypeExportValidator implements CompanyTypeExportValidatorInterface
         return in_array(
             $companyTypeTransfer->getName(),
             $this->companyTypeConfig->getValidCompanyTypesForExport(),
-            true
+            true,
         );
     }
 

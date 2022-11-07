@@ -31,7 +31,7 @@ class CompanyTypeStub implements CompanyTypeStubInterface
         /** @var \Generated\Shared\Transfer\CompanyTypeResponseTransfer $companyTypeResponseTransfer */
         $companyTypeResponseTransfer = $this->zedRequestClient->call(
             '/company-type/gateway/find-company-type-by-id',
-            $companyTypeTransfer
+            $companyTypeTransfer,
         );
 
         return $companyTypeResponseTransfer;

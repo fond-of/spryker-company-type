@@ -73,7 +73,7 @@ class CompanyTypeRepository extends AbstractRepository implements CompanyTypeRep
     public function getAll(): CompanyTypeCollectionTransfer
     {
         $fosCompanyTypes = $this->buildQueryFromCriteria(
-            $this->getFactory()->createCompanyTypeQuery()
+            $this->getFactory()->createCompanyTypeQuery(),
         )->find();
 
         $companyTypeMapper = $this->getFactory()->createCompanyTypeMapper();

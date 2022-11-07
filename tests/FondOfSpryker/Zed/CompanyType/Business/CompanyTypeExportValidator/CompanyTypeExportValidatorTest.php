@@ -48,7 +48,7 @@ class CompanyTypeExportValidatorTest extends Unit
     protected $eventEntityTransferMock;
 
     /**
-     * @var string[]
+     * @var array<string>
      */
     protected $validCompanyTypesForExport;
 
@@ -91,7 +91,7 @@ class CompanyTypeExportValidatorTest extends Unit
         $this->companyTypeExportValidator = new CompanyTypeExportValidator(
             $this->companyTypeReaderMock,
             $this->companyBusinessUnitFacadeMock,
-            $this->configMock
+            $this->configMock,
         );
     }
 

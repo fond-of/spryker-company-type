@@ -57,7 +57,7 @@ class CompanyTypeFactoryTest extends Unit
 
         $this->assertInstanceOf(
             CompanyTypeStubInterface::class,
-            $this->companyTypeFactory->createZedCompanyTypeStub()
+            $this->companyTypeFactory->createZedCompanyTypeStub(),
         );
     }
 }

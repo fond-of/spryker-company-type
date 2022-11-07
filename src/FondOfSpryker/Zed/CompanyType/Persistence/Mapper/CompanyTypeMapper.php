@@ -20,7 +20,7 @@ class CompanyTypeMapper implements CompanyTypeMapperInterface
     ): CompanyTypeTransfer {
         return $companyTypeTransfer->fromArray(
             $fosCompanyType->toArray(),
-            true
+            true,
         );
     }
 
@@ -35,7 +35,7 @@ class CompanyTypeMapper implements CompanyTypeMapperInterface
         FosCompanyType $fosCompanyType
     ): FosCompanyType {
         $fosCompanyType->fromArray(
-            $companyTypeTransfer->modifiedToArray(false)
+            $companyTypeTransfer->modifiedToArray(false),
         );
 
         return $fosCompanyType;
@@ -53,7 +53,7 @@ class CompanyTypeMapper implements CompanyTypeMapperInterface
     ): CompanyTypeTransfer {
         return $companyTypeTransfer->fromArray(
             $fosCompanyTypeEntityTransfer->toArray(),
-            true
+            true,
         );
     }
 
@@ -68,7 +68,7 @@ class CompanyTypeMapper implements CompanyTypeMapperInterface
         FosCompanyTypeEntityTransfer $fosCompanyTypeEntityTransfer
     ): FosCompanyTypeEntityTransfer {
         $fosCompanyTypeEntityTransfer->fromArray(
-            $companyTypeTransfer->modifiedToArray(false)
+            $companyTypeTransfer->modifiedToArray(false),
         );
 
         return $fosCompanyTypeEntityTransfer;
