@@ -142,6 +142,11 @@ interface CompanyTypeFacadeInterface
     public function getCompanyTypeManufacturerName(): ?string;
 
     /**
+     * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
+     */
+    public function getCompanyTypeManufacturer(): ?CompanyTypeTransfer;
+
+    /**
      * @param \Generated\Shared\Transfer\EventEntityTransfer $transfer
      *
      * @return bool

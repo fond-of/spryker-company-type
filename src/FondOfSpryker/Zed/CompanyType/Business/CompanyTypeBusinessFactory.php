@@ -28,6 +28,7 @@ class CompanyTypeBusinessFactory extends AbstractBusinessFactory
     {
         return new CompanyTypeReader(
             $this->getRepository(),
+            $this->getConfig(),
         );
     }
 

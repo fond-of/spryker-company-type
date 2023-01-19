@@ -2,6 +2,7 @@
 
 namespace FondOfSpryker\Zed\CompanyType\Business\Model;
 
+use FondOfSpryker\Zed\CompanyType\CompanyTypeConfig;
 use FondOfSpryker\Zed\CompanyType\Persistence\CompanyTypeRepositoryInterface;
 use Generated\Shared\Transfer\CompanyCollectionTransfer;
 use Generated\Shared\Transfer\CompanyTransfer;
@@ -12,16 +13,25 @@ use Generated\Shared\Transfer\CompanyTypeTransfer;
 class CompanyTypeReader implements CompanyTypeReaderInterface
 {
     /**
+     * @var \FondOfSpryker\Zed\CompanyType\CompanyTypeConfig
+     */
+    protected $companyTypeConfig;
+
+    /**
      * @var \FondOfSpryker\Zed\CompanyType\Persistence\CompanyTypeRepositoryInterface
      */
     protected $companyTypeRepository;
 
     /**
      * @param \FondOfSpryker\Zed\CompanyType\Persistence\CompanyTypeRepositoryInterface $companyTypeRepository
+     * @param \FondOfSpryker\Zed\CompanyType\CompanyTypeConfig $companyTypeConfig
      */
-    public function __construct(CompanyTypeRepositoryInterface $companyTypeRepository)
-    {
+    public function __construct(
+        CompanyTypeRepositoryInterface $companyTypeRepository,
+        CompanyTypeConfig $companyTypeConfig
+    ) {
         $this->companyTypeRepository = $companyTypeRepository;
+        $this->companyTypeConfig = $companyTypeConfig;
     }
 
     /**
@@ -101,5 +111,19 @@ class CompanyTypeReader implements CompanyTypeReaderInterface
         return $companyTypeResponseTransfer
             ->setIsSuccessful(true)
             ->setCompanyTypeTransfer($companyTypeTransfer);
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
+     */
+    public function getCompanyTypeManufacturer(): ?CompanyTypeTransfer
+    {
+        $name = $this->companyTypeConfig->getCompanyTypeManufacturer();
+
+        if (!$name) {
+            return null;
+        }
+
+        return $this->companyTypeRepository->getByName($name);
     }
 }

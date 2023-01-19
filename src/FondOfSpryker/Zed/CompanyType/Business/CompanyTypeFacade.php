@@ -159,6 +159,16 @@ class CompanyTypeFacade extends AbstractFacade implements CompanyTypeFacadeInter
     }
 
     /**
+     * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
+     */
+    public function getCompanyTypeManufacturer(): ?CompanyTypeTransfer
+    {
+        return $this->getFactory()
+            ->createCompanyTypeReader()
+            ->getCompanyTypeManufacturer();
+    }
+
+    /**
      * @param \Generated\Shared\Transfer\EventEntityTransfer $transfer
      *
      * @return bool

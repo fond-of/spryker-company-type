@@ -49,4 +49,9 @@ interface CompanyTypeReaderInterface
      * @return \Generated\Shared\Transfer\CompanyTypeResponseTransfer
      */
     public function findCompanyTypeById(CompanyTypeTransfer $companyTypeTransfer): CompanyTypeResponseTransfer;
+
+    /**
+     * @return \Generated\Shared\Transfer\CompanyTypeTransfer|null
+     */
+    public function getCompanyTypeManufacturer(): ?CompanyTypeTransfer;
 }
