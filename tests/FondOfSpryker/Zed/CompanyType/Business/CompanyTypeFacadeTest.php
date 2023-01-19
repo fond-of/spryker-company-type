@@ -163,4 +163,23 @@ class CompanyTypeFacadeTest extends Unit
 
         $this->companyTypeFacade->deleteCompanyType($this->companyTypeTransferMock);
     }
+
+    /**
+     * @return void
+     */
+    public function testGetCompanyTypeManufacturer(): void
+    {
+        $this->companyTypeBusinessFactoryMock->expects($this->atLeastOnce())
+            ->method('createCompanyTypeReader')
+            ->willReturn($this->companyTypeReaderMock);
+
+        $this->companyTypeReaderMock->expects($this->atLeastOnce())
+            ->method('getCompanyTypeManufacturer')
+            ->willReturn($this->companyTypeTransferMock);
+
+        $this->assertEquals(
+            $this->companyTypeTransferMock,
+            $this->companyTypeFacade->getCompanyTypeManufacturer(),
+        );
+    }
 }
